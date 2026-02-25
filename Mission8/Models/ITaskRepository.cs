@@ -1,4 +1,4 @@
-﻿using Mission8.Models;
+﻿using System.Linq;
 
 namespace Mission8.Models
 {
@@ -7,9 +7,9 @@ namespace Mission8.Models
         IQueryable<TaskItem> TaskItem { get; }
         IQueryable<Category> Categories { get; }
 
-        void AddTask(TaskItem TaskName);
-        void UpdateTask(TaskItem TaskName);
-        void DeleteTask(TaskItem TaskName);
+        void AddTask(TaskItem task);
+        void UpdateTask(TaskItem task);
+        void DeleteTask(TaskItem task);
         void Save();
     }
 }
