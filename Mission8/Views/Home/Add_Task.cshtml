@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "Add/Edit Task";
+}
+@model TaskItem
+
+<div>
+    <fieldset>
+        <legend>Add/Edit Task</legend> 
+        <form>
+            <input asp-for="taskID" type="text" hidden/>
+            <label asp-for="task">Task:</label>
+            <input asp-for="task" type="text"/>
+            <br/>
+            <label asp-for="due_date">Due Date:</label>
+            <input asp-for="due_date" type="text"/>
+            <br/>
+            <label asp-for="quadrant">Quadrant:</label>
+            <select asp-for="quadrant">
+                @foreach (quadrant q in Model.quadrant)
+                {
+                    <option value="@Model.quadrant">@Model.quadrant</option>
+                }
+            </select>
+            <br/>
+            <select asp-for="Category">
+                @foreach (category c in ViewBag.category)
+                {
+                    <option value="@c.category">@c.Category</option>
+                }
+            </select>
+            <br/>
+            <select asp-for="completed">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </fieldset>
+</div>
