@@ -16,7 +16,7 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Index()
     {
-        var tasks = _repo.Tasks
+        var tasks = _repo.TaskItem
             .Where(x => x.Completed == false)
             .ToList();
 
@@ -26,8 +26,8 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Add_Task()
     {
-        ViewBag.Category = _repo.Category.ToList()
-        return View()
+        ViewBag.Categories = _repo.Categories.ToList();
+        return View();
     }
 
     [HttpPost]
@@ -41,15 +41,15 @@ public class HomeController : Controller
         }
         
         // if there are errors return this view with the errors
-        ViewBag.Category = _repo.Category.ToList();
-        return View(response);
+        ViewBag.Categories = _repo.Categories.ToList();
+        return RedirectToAction("Index");
     }
 
     [HttpGet]
     public IActionResult Edit_Task(int id)
     {
-        var tasktoEdit = _repo.TaskItem.Single(x => x.TaskId == id);
-        ViewBag.Category = _repo.Category.ToList();
+        var tasktoEdit = _repo.TaskItem.Single(x => x.TaskItemId == id);
+        ViewBag.Categories = _repo.Categories.ToList();
         return View("Add_Task", tasktoEdit);
     }
 
@@ -63,8 +63,8 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Delete_Task(int id)
     {
-        var task = _repo.Tasks.Single(x => x.TaskId == id);
-        _repo.DeleteTask(task);
+        var TaskName= _repo.TaskItem.Single(x => x.TaskItemId == id);
+        _repo.DeleteTask(TaskName);
     
         return RedirectToAction("Index");
     }

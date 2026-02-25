@@ -1,38 +1,52 @@
+@using Mission8.Models
+@model TaskItem
+
 @{
     ViewData["Title"] = "Add/Edit Task";
 }
-@model TaskItem
 
 <div>
     <fieldset>
-        <legend>Add/Edit Task</legend> 
-        <form>
-            <input asp-for="taskID" type="text" hidden/>
-            <label asp-for="task">Task:</label>
-            <input asp-for="task" type="text"/>
-            <br/>
-            <label asp-for="due_date">Due Date:</label>
-            <input asp-for="due_date" type="text"/>
-            <br/>
-            <label asp-for="quadrant">Quadrant:</label>
-            <select asp-for="quadrant">
-                @foreach (quadrant q in Model.quadrant)
+        <legend>Add/Edit Task</legend>
+
+        <form method="post">
+            <input asp-for="TaskItemId" type="hidden" />
+
+            <label asp-for="TaskName">Task:</label>
+            <input asp-for="TaskName" type="text" />
+            <br />
+
+            <label asp-for="DueDate">Due Date:</label>
+            <input asp-for="DueDate" type="date" />
+            <br />
+
+            <label asp-for="Quadrant">Quadrant:</label>
+            <select asp-for="Quadrant">
+                <option value="">Select a quadrant</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <br />
+
+            <label asp-for="CategoryId">Category:</label>
+            <select asp-for="CategoryId">
+                <option value="">Select a category</option>
+                @foreach (Category c in ViewBag.Categories)
                 {
-                    <option value="@Model.quadrant">@Model.quadrant</option>
+                    <option value="@c.CategoryId">@c.CategoryName</option>
                 }
             </select>
-            <br/>
-            <select asp-for="Category">
-                @foreach (category c in ViewBag.category)
-                {
-                    <option value="@c.category">@c.Category</option>
-                }
-            </select>
-            <br/>
-            <select asp-for="completed">
-                <option value="true">Yes</option>
+            <br />
+
+            <label asp-for="Completed">Completed:</label>
+            <select asp-for="Completed">
                 <option value="false">No</option>
+                <option value="true">Yes</option>
             </select>
+            <br />
+
             <button type="submit">Submit</button>
         </form>
     </fieldset>
