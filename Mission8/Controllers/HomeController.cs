@@ -19,8 +19,20 @@ public class HomeController : Controller
         var tasks = _repo.TaskItem
             .Where(x => x.Completed == false)
             .ToList();
+        
+        ViewBag.Quad2 = 
+            _repo.Where(x => x.Completed == false).AndWhere(x => x.Quadrant == 2)
+                .ToList();
+        
+        ViewBag.Quad3 = 
+            _repo.Where(x => x.Completed == false).AndWhere(x => x.Quadrant == 3)
+                .ToList();
 
-        return View(tasks);
+        ViewBag.Quad4 = 
+            _repo.Where(x => x.Completed == false).AndWhere(x => x.Quadrant == 4)
+                .ToList();
+        
+        return View();
     }
     
     [HttpGet]
