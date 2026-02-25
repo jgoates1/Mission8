@@ -1,11 +1,13 @@
 @{
     ViewData["Title"] = "Add/Edit Task";
 }
+@model TaskItem
 
 <div>
     <fieldset>
         <legend>Add/Edit Task</legend> 
         <form>
+            <input asp-for="taskID" type="text" hidden/>
             <label asp-for="task">Task:</label>
             <input asp-for="task" type="text"/>
             <br/>
@@ -14,9 +16,9 @@
             <br/>
             <label asp-for="quadrant">Quadrant:</label>
             <select asp-for="quadrant">
-                @foreach (quadrant q in ViewBag.quadrant)
+                @foreach (quadrant q in Model.quadrant)
                 {
-                    <option value="@q.quadrant">@q.quadrant</option>
+                    <option value="@Model.quadrant">@Model.quadrant</option>
                 }
             </select>
             <br/>
