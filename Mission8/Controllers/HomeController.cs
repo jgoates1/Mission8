@@ -16,11 +16,23 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult Index()
     {
-        var tasks = _repo.Tasks
-            .Where(x => x.Completed == false)
+        ViewBag.Quad1 = 
+            _repo.Where(x => x.Completed == false).AndWhere(x => x.Quadrant == 1)
             .ToList();
+        
+        ViewBag.Quad2 = 
+            _repo.Where(x => x.Completed == false).AndWhere(x => x.Quadrant == 2)
+                .ToList();
+        
+        ViewBag.Quad3 = 
+            _repo.Where(x => x.Completed == false).AndWhere(x => x.Quadrant == 3)
+                .ToList();
 
-        return View(tasks);
+        ViewBag.Quad4 = 
+            _repo.Where(x => x.Completed == false).AndWhere(x => x.Quadrant == 4)
+                .ToList();
+        
+        return View();
     }
     
     [HttpGet]
