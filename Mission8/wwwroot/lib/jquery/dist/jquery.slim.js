@@ -3848,9 +3848,9 @@ jQuery.extend( {
 jQuery.ready.then = readyList.then;
 
 // The ready event handler and self cleanup method
-function completed() {
-	document.removeEventListener( "DOMContentLoaded", completed );
-	window.removeEventListener( "load", completed );
+function Completed() {
+	document.removeEventListener( "DOMContentLoaded", Completed );
+	window.removeEventListener( "load", Completed );
 	jQuery.ready();
 }
 
@@ -3867,10 +3867,10 @@ if ( document.readyState === "complete" ||
 } else {
 
 	// Use the handy event callback
-	document.addEventListener( "DOMContentLoaded", completed );
+	document.addEventListener( "DOMContentLoaded", Completed );
 
 	// A fallback to window.onload, that will always work
-	window.addEventListener( "load", completed );
+	window.addEventListener( "load", Completed );
 }
 
 

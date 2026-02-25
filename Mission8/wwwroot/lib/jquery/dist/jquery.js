@@ -3848,9 +3848,9 @@ jQuery.extend( {
 jQuery.ready.then = readyList.then;
 
 // The ready event handler and self cleanup method
-function completed() {
-	document.removeEventListener( "DOMContentLoaded", completed );
-	window.removeEventListener( "load", completed );
+function Completed() {
+	document.removeEventListener( "DOMContentLoaded", Completed );
+	window.removeEventListener( "load", Completed );
 	jQuery.ready();
 }
 
@@ -3867,10 +3867,10 @@ if ( document.readyState === "complete" ||
 } else {
 
 	// Use the handy event callback
-	document.addEventListener( "DOMContentLoaded", completed );
+	document.addEventListener( "DOMContentLoaded", Completed );
 
 	// A fallback to window.onload, that will always work
-	window.addEventListener( "load", completed );
+	window.addEventListener( "load", Completed );
 }
 
 
@@ -9233,7 +9233,7 @@ jQuery.extend( {
 			urlAnchor,
 
 			// Request state (becomes false upon send and true upon completion)
-			completed,
+			Completed,
 
 			// To know if global events are to be dispatched
 			fireGlobals,
@@ -9277,7 +9277,7 @@ jQuery.extend( {
 				// Builds headers hashtable if needed
 				getResponseHeader: function( key ) {
 					var match;
-					if ( completed ) {
+					if ( Completed ) {
 						if ( !responseHeaders ) {
 							responseHeaders = {};
 							while ( ( match = rheaders.exec( responseHeadersString ) ) ) {
@@ -9293,12 +9293,12 @@ jQuery.extend( {
 
 				// Raw string
 				getAllResponseHeaders: function() {
-					return completed ? responseHeadersString : null;
+					return Completed ? responseHeadersString : null;
 				},
 
 				// Caches the header
 				setRequestHeader: function( name, value ) {
-					if ( completed == null ) {
+					if ( Completed == null ) {
 						name = requestHeadersNames[ name.toLowerCase() ] =
 							requestHeadersNames[ name.toLowerCase() ] || name;
 						requestHeaders[ name ] = value;
@@ -9308,7 +9308,7 @@ jQuery.extend( {
 
 				// Overrides response content-type header
 				overrideMimeType: function( type ) {
-					if ( completed == null ) {
+					if ( Completed == null ) {
 						s.mimeType = type;
 					}
 					return this;
@@ -9318,7 +9318,7 @@ jQuery.extend( {
 				statusCode: function( map ) {
 					var code;
 					if ( map ) {
-						if ( completed ) {
+						if ( Completed ) {
 
 							// Execute the appropriate callbacks
 							jqXHR.always( map[ jqXHR.status ] );
@@ -9391,7 +9391,7 @@ jQuery.extend( {
 		inspectPrefiltersOrTransports( prefilters, s, options, jqXHR );
 
 		// If request was aborted inside a prefilter, stop there
-		if ( completed ) {
+		if ( Completed ) {
 			return jqXHR;
 		}
 
@@ -9476,7 +9476,7 @@ jQuery.extend( {
 
 		// Allow custom headers/mimetypes and early abort
 		if ( s.beforeSend &&
-			( s.beforeSend.call( callbackContext, jqXHR, s ) === false || completed ) ) {
+			( s.beforeSend.call( callbackContext, jqXHR, s ) === false || Completed ) ) {
 
 			// Abort if not done already and return
 			return jqXHR.abort();
@@ -9505,7 +9505,7 @@ jQuery.extend( {
 			}
 
 			// If request was aborted inside ajaxSend, stop there
-			if ( completed ) {
+			if ( Completed ) {
 				return jqXHR;
 			}
 
@@ -9517,12 +9517,12 @@ jQuery.extend( {
 			}
 
 			try {
-				completed = false;
+				Completed = false;
 				transport.send( requestHeaders, done );
 			} catch ( e ) {
 
 				// Rethrow post-completion exceptions
-				if ( completed ) {
+				if ( Completed ) {
 					throw e;
 				}
 
@@ -9537,11 +9537,11 @@ jQuery.extend( {
 				statusText = nativeStatusText;
 
 			// Ignore repeat invocations
-			if ( completed ) {
+			if ( Completed ) {
 				return;
 			}
 
-			completed = true;
+			Completed = true;
 
 			// Clear timeout if it exists
 			if ( timeoutTimer ) {
