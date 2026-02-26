@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\source\\repos\\jgoates1\\Mission8\\Mission8\\Mission8.csproj": {}
+    "/Users/joshuagoates/RiderProjects/Mission8/Mission8/Mission8.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\source\\repos\\jgoates1\\Mission8\\Mission8\\Mission8.csproj": {
+    "/Users/joshuagoates/RiderProjects/Mission8/Mission8/Mission8.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\jgoates1\\Mission8\\Mission8\\Mission8.csproj",
+        "projectUniqueName": "/Users/joshuagoates/RiderProjects/Mission8/Mission8/Mission8.csproj",
         "projectName": "Mission8",
-        "projectPath": "C:\\Users\\Administrator\\source\\repos\\jgoates1\\Mission8\\Mission8\\Mission8.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\source\\repos\\jgoates1\\Mission8\\Mission8\\obj\\",
+        "projectPath": "/Users/joshuagoates/RiderProjects/Mission8/Mission8/Mission8.csproj",
+        "packagesPath": "/Users/joshuagoates/.nuget/packages/",
+        "outputPath": "/Users/joshuagoates/RiderProjects/Mission8/Mission8/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/joshuagoates/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -80,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.101/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

@@ -22,9 +22,9 @@ public class HomeController : Controller
         var tasks = incomplete.ToList();
 
         // Quadrant-specific lists (still incomplete)
-        ViewBag.Quad2 = incomplete.Where(x => x.Quadrant == 2).ToList();
-        ViewBag.Quad3 = incomplete.Where(x => x.Quadrant == 3).ToList();
-        ViewBag.Quad4 = incomplete.Where(x => x.Quadrant == 4).ToList();
+        ViewBag.quad2 = incomplete.Where(x => x.Quadrant == 2).ToList();
+        ViewBag.quad3 = incomplete.Where(x => x.Quadrant == 3).ToList();
+        ViewBag.quad4 = incomplete.Where(x => x.Quadrant == 4).ToList();
 
         return View(tasks);
     }
