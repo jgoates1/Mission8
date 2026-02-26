@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission8.Models
 {
+    // Represents one task in the Covey matrix: name, due date, quadrant (1-4), category, and completed flag.
     public class TaskItem
     {
         [Key]
@@ -21,7 +22,7 @@ namespace Mission8.Models
         public int CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]
-        public Category? Category { get; set; }
+        public Category? Category { get; set; }  // Navigation property for dropdown display (e.g. CategoryName).
 
         public bool Completed { get; set; } = false;
     }

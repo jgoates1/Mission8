@@ -1,9 +1,10 @@
-﻿using System.Linq;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Mission8.Data;
 
 namespace Mission8.Models
 {
+    // Concrete repository: implements ITaskRepository using Entity Framework and TaskDbContext.
     public class EFTaskRepository : ITaskRepository
     {
         private readonly TaskDbContext _context;
@@ -13,7 +14,7 @@ namespace Mission8.Models
             _context = temp;
         }
 
-        // Include Category so views can use task.Category.CategoryName if needed
+        // Include Category so the quadrant view can show task.Category.CategoryName without extra queries.
         public IQueryable<TaskItem> TaskItem => _context.TaskItem.Include(t => t.Category);
 
         public IQueryable<Category> Categories => _context.Categories;

@@ -1,6 +1,8 @@
-﻿@{
+@{
     ViewData["Title"] = "Home Page";
 }
+@* Quadrants view: displays only uncompleted tasks in a 2x2 matrix (Urgent/Not Urgent vs Important/Not Important). *@
+@* Each task row has Complete, Edit, and Delete actions. *@
 
 <h1>Stephen Covey's Time Management Matrix</h1>
 
@@ -19,6 +21,7 @@
     <div class="col-md-2 d-flex align-items-center justify-content-center border">
         <h2 style="writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;">Important</h2>
     </div>
+    @* Quadrant I: Important / Urgent *@
     <div class="col-md-5 border">
         <table>
             @foreach (var quad1 in ViewBag.Quad1)

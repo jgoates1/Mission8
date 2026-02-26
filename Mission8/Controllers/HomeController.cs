@@ -3,6 +3,7 @@ using Mission8.Models;
 
 namespace Mission8.Controllers;
 
+// Handles the quadrant matrix view, adding/editing tasks, and delete/mark-complete actions.
 public class HomeController : Controller
 {
     private readonly ITaskRepository _repo;
@@ -12,16 +13,13 @@ public class HomeController : Controller
         _repo = temp;
     }
 
+    // Displays the Covey matrix: only uncompleted tasks, grouped by quadrant (1-4).
     [HttpGet]
     public IActionResult Index()
     {
-        // Base query: only incomplete tasks
         var incomplete = _repo.TaskItem.Where(x => !x.Completed);
-
-        // Pass all incomplete tasks to the view (so it can render them)
         var tasks = incomplete.ToList();
 
-        // Quadrant-specific lists (still incomplete)
         ViewBag.Quad1 = incomplete.Where(x => x.Quadrant == 1).ToList();
         ViewBag.Quad2 = incomplete.Where(x => x.Quadrant == 2).ToList();
         ViewBag.Quad3 = incomplete.Where(x => x.Quadrant == 3).ToList();
@@ -30,6 +28,7 @@ public class HomeController : Controller
         return View(tasks);
     }
 
+    // Serves the add/edit form; categories come from the repo for the dropdown.
     [HttpGet]
     public IActionResult Add_Task()
     {
@@ -46,8 +45,6 @@ public class HomeController : Controller
             _repo.Save();
             return RedirectToAction("Index");
         }
-
-        // If there are errors, return this view with the errors
         ViewBag.Categories = _repo.Categories.ToList();
         return View(item);
     }
