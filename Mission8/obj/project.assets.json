@@ -8,19 +8,19 @@
     "net10.0": []
   },
   "packageFolders": {
-    "/Users/rental/.nuget/packages/": {}
+    "/Users/joshuagoates/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/rental/RiderProjects/Mission8/Mission8/Mission8.csproj",
+      "projectUniqueName": "/Users/joshuagoates/RiderProjects/Mission8/Mission8/Mission8.csproj",
       "projectName": "Mission8",
-      "projectPath": "/Users/rental/RiderProjects/Mission8/Mission8/Mission8.csproj",
-      "packagesPath": "/Users/rental/.nuget/packages/",
-      "outputPath": "/Users/rental/RiderProjects/Mission8/Mission8/obj/",
+      "projectPath": "/Users/joshuagoates/RiderProjects/Mission8/Mission8/Mission8.csproj",
+      "packagesPath": "/Users/joshuagoates/.nuget/packages/",
+      "outputPath": "/Users/joshuagoates/RiderProjects/Mission8/Mission8/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/rental/.nuget/NuGet/NuGet.Config"
+        "/Users/joshuagoates/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
