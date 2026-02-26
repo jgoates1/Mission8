@@ -22,9 +22,10 @@ public class HomeController : Controller
         var tasks = incomplete.ToList();
 
         // Quadrant-specific lists (still incomplete)
-        ViewBag.quad2 = incomplete.Where(x => x.Quadrant == 2).ToList();
-        ViewBag.quad3 = incomplete.Where(x => x.Quadrant == 3).ToList();
-        ViewBag.quad4 = incomplete.Where(x => x.Quadrant == 4).ToList();
+        ViewBag.Quad1 = incomplete.Where(x => x.Quadrant == 1).ToList();
+        ViewBag.Quad2 = incomplete.Where(x => x.Quadrant == 2).ToList();
+        ViewBag.Quad3 = incomplete.Where(x => x.Quadrant == 3).ToList();
+        ViewBag.Quad4 = incomplete.Where(x => x.Quadrant == 4).ToList();
 
         return View(tasks);
     }
@@ -80,6 +81,16 @@ public class HomeController : Controller
         _repo.DeleteTask(taskToDelete);
         _repo.Save();
 
+        return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public IActionResult MarkComplete(int id)
+    {
+        var task = _repo.TaskItem.Single(x => x.TaskItemId == id);
+        task.Completed = true;
+        _repo.UpdateTask(task);
+        _repo.Save();
         return RedirectToAction("Index");
     }
 }

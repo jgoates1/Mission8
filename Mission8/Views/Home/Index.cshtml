@@ -24,16 +24,16 @@
             @foreach (var quad1 in ViewBag.Quad1)
             {
                 <tr>
-                    <td>@quad1.Task</td>
+                    <td>@quad1.TaskName</td>
                     <td>@(quad1.DueDate != null ? quad1.DueDate : "")</td>
-                    <td>@quad1.Category</td>
+                    <td>@quad1.Category?.CategoryName</td>
                     <td>
-                        <form asp-controller="Home" asp-action="MarkComplete" asp-route-id="@quad1.TaskId" method="post" style="display:inline">
+                        <form asp-controller="Home" asp-action="MarkComplete" asp-route-id="@quad1.TaskItemId" method="post" style="display:inline">
                             <button type="submit" class="btn btn-success">Complete</button>
                         </form>
                     </td>
-                    <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@quad1.TaskId">Edit</a></td>
-                    <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@quad1.TaskId">Delete</a></td>
+                    <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit_Task" asp-route-id="@quad1.TaskItemId">Edit</a></td>
+                    <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete_Task" asp-route-id="@quad1.TaskItemId">Delete</a></td>
                 </tr>
             }
         </table>
@@ -44,16 +44,16 @@
             @foreach (var quad2 in ViewBag.Quad2)
             {
                 <tr>
-                    <td>@quad2.Task</td>
+                    <td>@quad2.TaskName</td>
                     <td>@(quad2.DueDate != null ? quad2.DueDate : "")</td>
-                    <td>@quad2.Category</td>
+                    <td>@quad2.Category?.CategoryName</td>
                     <td>
-                        <form asp-controller="Home" asp-action="MarkComplete" asp-route-id="@quad2.TaskId" method="post" style="display:inline">
+                        <form asp-controller="Home" asp-action="MarkComplete" asp-route-id="@quad2.TaskItemId" method="post" style="display:inline">
                             <button type="submit" class="btn btn-success">Complete</button>
                         </form>
                     </td>
-                    <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@quad2.TaskId">Edit</a></td>
-                    <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@quad2.TaskId">Delete</a></td>
+                    <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit_Task" asp-route-id="@quad2.TaskItemId">Edit</a></td>
+                    <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete_Task" asp-route-id="@quad2.TaskItemId">Delete</a></td>
                 </tr>
             }
         </table>
@@ -69,16 +69,16 @@
             @foreach (var quad3 in ViewBag.Quad3)
             {
                 <tr>
-                    <td>@quad3.Task</td>
+                    <td>@quad3.TaskName</td>
                     <td>@(quad3.DueDate != null ? quad3.DueDate : "")</td>
-                    <td>@quad3.Category</td>
+                    <td>@quad3.Category?.CategoryName</td>
                     <td>
-                        <form asp-controller="Home" asp-action="MarkComplete" asp-route-id="@quad3.TaskId" method="post" style="display:inline">
+                        <form asp-controller="Home" asp-action="MarkComplete" asp-route-id="@quad3.TaskItemId" method="post" style="display:inline">
                             <button type="submit" class="btn btn-success">Complete</button>
                         </form>
                     </td>
-                    <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@quad3.TaskId">Edit</a></td>
-                    <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@quad3.TaskId">Delete</a></td>
+                    <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit_Task" asp-route-id="@quad3.TaskItemId">Edit</a></td>
+                    <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete_Task" asp-route-id="@quad3.TaskItemId">Delete</a></td>
                 </tr>
             }
         </table>
@@ -88,16 +88,16 @@
             @foreach (var quad4 in ViewBag.Quad4)
             {
                 <tr>
-                    <td>@quad4.Task</td>
+                    <td>@quad4.TaskName</td>
                     <td>@(quad4.DueDate != null ? quad4.DueDate : "")</td>
-                    <td>@quad4.Category</td>
+                    <td>@quad4.Category?.CategoryName</td>
                     <td>
-                        <form asp-controller="Home" asp-action="MarkComplete" asp-route-id="@quad4.TaskId" method="post" style="display:inline">
+                        <form asp-controller="Home" asp-action="MarkComplete" asp-route-id="@quad4.TaskItemId" method="post" style="display:inline">
                             <button type="submit" class="btn btn-success">Complete</button>
                         </form>
                     </td>
-                    <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@quad4.TaskId">Edit</a></td>
-                    <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@quad4.TaskId">Delete</a></td>
+                    <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit_Task" asp-route-id="@quad4.TaskItemId">Edit</a></td>
+                    <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete_Task" asp-route-id="@quad4.TaskItemId">Delete</a></td>
                 </tr>
             }
         </table>
