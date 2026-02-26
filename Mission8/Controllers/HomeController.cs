@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Mission8.Models;
 
@@ -6,79 +5,81 @@ namespace Mission8.Controllers;
 
 public class HomeController : Controller
 {
-    private ITaskRepository _repo;
+    private readonly ITaskRepository _repo;
 
     public HomeController(ITaskRepository temp)
     {
         _repo = temp;
     }
-    
+
     [HttpGet]
     public IActionResult Index()
     {
-        ViewBag.Quad1 = 
-            _repo.Where(x => x.Completed == false).AndWhere(x => x.Quadrant == 1)
-            .ToList();
-        
-        ViewBag.Quad2 = 
-            _repo.Where(x => x.Completed == false).AndWhere(x => x.Quadrant == 2)
-                .ToList();
-        
-        ViewBag.Quad3 = 
-            _repo.Where(x => x.Completed == false).AndWhere(x => x.Quadrant == 3)
-                .ToList();
+        // Base query: only incomplete tasks
+        var incomplete = _repo.TaskItem.Where(x => !x.Completed);
 
-        ViewBag.Quad4 = 
-            _repo.Where(x => x.Completed == false).AndWhere(x => x.Quadrant == 4)
-                .ToList();
-        
-        return View();
+        // Pass all incomplete tasks to the view (so it can render them)
+        var tasks = incomplete.ToList();
+
+        // Quadrant-specific lists (still incomplete)
+        ViewBag.Quad2 = incomplete.Where(x => x.Quadrant == 2).ToList();
+        ViewBag.Quad3 = incomplete.Where(x => x.Quadrant == 3).ToList();
+        ViewBag.Quad4 = incomplete.Where(x => x.Quadrant == 4).ToList();
+
+        return View(tasks);
     }
-    
+
     [HttpGet]
     public IActionResult Add_Task()
     {
-        ViewBag.Category = _repo.Category.ToList()
-        return View()
+        ViewBag.Categories = _repo.Categories.ToList();
+        return View(new TaskItem());
     }
 
     [HttpPost]
     public IActionResult Add_Task(TaskItem item)
     {
-        // use repository to add something to the database
         if (ModelState.IsValid)
         {
             _repo.AddTask(item);
+            _repo.Save();
             return RedirectToAction("Index");
         }
-        
-        // if there are errors return this view with the errors
-        ViewBag.Category = _repo.Category.ToList();
-        return View(response);
+
+        // If there are errors, return this view with the errors
+        ViewBag.Categories = _repo.Categories.ToList();
+        return View(item);
     }
 
     [HttpGet]
     public IActionResult Edit_Task(int id)
     {
-        var tasktoEdit = _repo.TaskItem.Single(x => x.TaskId == id);
-        ViewBag.Category = _repo.Category.ToList();
-        return View("Add_Task", tasktoEdit);
+        var taskToEdit = _repo.TaskItem.Single(x => x.TaskItemId == id);
+        ViewBag.Categories = _repo.Categories.ToList();
+        return View("Add_Task", taskToEdit);
     }
 
     [HttpPost]
     public IActionResult Edit_Task(TaskItem updatedTask)
     {
-        _repo.UpdateTask(updatedTask);
-        return RedirectToAction("Index");
+        if (ModelState.IsValid)
+        {
+            _repo.UpdateTask(updatedTask);
+            _repo.Save();
+            return RedirectToAction("Index");
+        }
+
+        ViewBag.Categories = _repo.Categories.ToList();
+        return View("Add_Task", updatedTask);
     }
 
     [HttpGet]
     public IActionResult Delete_Task(int id)
     {
-        var task = _repo.Tasks.Single(x => x.TaskId == id);
-        _repo.DeleteTask(task);
-    
+        var taskToDelete = _repo.TaskItem.Single(x => x.TaskItemId == id);
+        _repo.DeleteTask(taskToDelete);
+        _repo.Save();
+
         return RedirectToAction("Index");
     }
-    
 }
